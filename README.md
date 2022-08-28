@@ -25,7 +25,9 @@ This project is using Docker to mount the following containers:
  2.  Access the newly created folder.
  3. We’ll now use  `docker-compose`  commands to build the application image and run the services we specified in our setup.
 Build the  `app`  image with the following command:
+
 $ `docker-compose build app`
+
 This command might take a few minutes to complete.
 At the end, you should see something like this:
 ```
@@ -34,7 +36,9 @@ Successfully tagged belvo:latest
 ```
 
  4. When the build is finished, you can run the environment in background mode with:
+ 
  $ `docker-compose up -d`
+ 
  The output should be like:
  ```
 Creating belvo-db    ... done
@@ -42,7 +46,9 @@ Creating belvo-app   ... done
 Creating belvo-nginx ... done
 ```
  5. (Optional) You can check if the containers are up and running:
+ 
  $ `docker-compose ps`
+ 
  The output looks like:
  ```
       Name                    Command              State          Ports        
@@ -52,7 +58,9 @@ belvo-db      docker-entrypoint.sh mysqld     Up      3306/tcp, 33060/tcp
 belvo-nginx   nginx -g daemon off;            Up      0.0.0.0:8000->80/tcp
 ```
  6. (Optional) Check if the php files are copied to the `app` container:
+
  $ `docker-compose exec app ls -l`
+ 
  Expected output:
  ```
 total 256
@@ -79,9 +87,13 @@ drwxrwxr-x 4 sammy 1001   4096 Jan  7 08:05 tests
 -rw-rw-r-- 1 sammy 1001    538 Jan  7 08:05 webpack.mix.js
 ```
  7. We’ll now run `composer install` to install the application dependencies:
+ 
  $ `docker-compose exec app composer install`
+ 
  8. The last thing we need to do before testing the application is to generate a unique application key with the `artisan` Laravel command-line tool. This key is used to encrypt user sessions and other sensitive data:
+ 
  $ `docker-compose exec app php artisan key:generate`
+ 
  To confirm, we should see:
  ```
 Application key set successfully.
