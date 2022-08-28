@@ -1,78 +1,96 @@
-<p align="center"><img src="https://res.cloudinary.com/dtfbvvkyp/image/upload/v1566331377/laravel-logolockup-cmyk-red.svg" width="400"></p>
+# Welcome to Belvo Interview Challenge
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/d/total.svg" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/v/stable.svg" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
-</p>
+Hi! This is the Belvo Solution Engineer Case Challenge. The main goal of this Project is to navigate through Belvo API, so, it's a small web app where you can register a new user and start using the **Belvo Connect Widget** to link your user to a couple of institutions, using Belvo Sandbox Environment *(so, not real life institution linking or real life customer data are passing through the integration)*. By navigating through your links, you will be able to check plenty of information like accounts, transactions, balances and more.
+By following these steps you should be able to run locally the entire project in your **localhost:8000**
+If you have any questions, please email me at rafaelweffort@gmail.com
 
-## About Laravel
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## Tech stack
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+This project is using Docker to mount the following containers:
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+ - An **app** service running PHP7.4-FPM, where the frontend and backend are located;
+ - A **db** service running MySQL 5.7, a database mainly to store users and links related to them;
+ - An **nginx** service that uses the app service to parse PHP code, before delivering the Laravel application to the end user.
 
-## Learning Laravel
+## Pre-requisites
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+ 1. Access to a local Linux (I tried on a Ubunto 22.04) or Mac (I also tried this steps in a MacOS Mojave) or a development server as a non-root user with sudo command privileges. *I haven't tried on a Windows machine.* 
+ 2. **Docker installed on your machine**, as instructed in [Steps 1 and 2 of the How to Install and Use Docker on Ubuntu tutorial](https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-22-04).
+ 3. **Docker Compose installed on your machine**, as instructed in [Step 1 of the How to Install Docker Compose on Ubuntu 18.04 tutorial](https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-compose-on-ubuntu-22-04).
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+## Steps
 
-## Laravel Sponsors
+ 1. `Git clone` this project to your local drive
+ 2.  Access the newly created folder.
+ 3. We’ll now use  `docker-compose`  commands to build the application image and run the services we specified in our setup.
+Build the  `app`  image with the following command:
+$ `docker-compose build app`
+This command might take a few minutes to complete.
+At the end, you should see something like this:
+```
+Successfully built fe176ff4702b
+Successfully tagged belvo:latest
+```
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
-
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[British Software Development](https://www.britishsoftware.co)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- [UserInsights](https://userinsights.com)
-- [Fragrantica](https://www.fragrantica.com)
-- [SOFTonSOFA](https://softonsofa.com/)
-- [User10](https://user10.com)
-- [Soumettre.fr](https://soumettre.fr/)
-- [CodeBrisk](https://codebrisk.com)
-- [1Forge](https://1forge.com)
-- [TECPRESSO](https://tecpresso.co.jp/)
-- [Runtime Converter](http://runtimeconverter.com/)
-- [WebL'Agence](https://weblagence.com/)
-- [Invoice Ninja](https://www.invoiceninja.com)
-- [iMi digital](https://www.imi-digital.de/)
-- [Earthlink](https://www.earthlink.ro/)
-- [Steadfast Collective](https://steadfastcollective.com/)
-- [We Are The Robots Inc.](https://watr.mx/)
-- [Understand.io](https://www.understand.io/)
-- [Abdel Elrafa](https://abdelelrafa.com)
-- [Hyper Host](https://hyper.host)
-- [Appoly](https://www.appoly.co.uk)
-- [OP.GG](https://op.gg)
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+ 4. When the build is finished, you can run the environment in background mode with:
+ $ `docker-compose up -d`
+ The output should be like:
+ ```
+Creating belvo-db    ... done
+Creating belvo-app   ... done
+Creating belvo-nginx ... done
+```
+ 5. (Optional) You can check if the containers are up and running:
+ $ `docker-compose ps`
+ The output looks like:
+ ```
+      Name                    Command              State          Ports        
+-------------------------------------------------------------------------------
+belvo-app     docker-php-entrypoint php-fpm   Up      9000/tcp            
+belvo-db      docker-entrypoint.sh mysqld     Up      3306/tcp, 33060/tcp 
+belvo-nginx   nginx -g daemon off;            Up      0.0.0.0:8000->80/tcp
+```
+ 6. (Optional) Check if the php files are copied to the `app` container:
+ $ `docker-compose exec app ls -l`
+ Expected output:
+ ```
+total 256
+-rw-rw-r-- 1 sammy 1001    738 Jan 15 16:46 Dockerfile
+-rw-rw-r-- 1 sammy 1001    101 Jan  7 08:05 README.md
+drwxrwxr-x 6 sammy 1001   4096 Jan  7 08:05 app
+-rwxr-xr-x 1 sammy 1001   1686 Jan  7 08:05 artisan
+drwxrwxr-x 3 sammy 1001   4096 Jan  7 08:05 bootstrap
+-rw-rw-r-- 1 sammy 1001   1501 Jan  7 08:05 composer.json
+-rw-rw-r-- 1 sammy 1001 179071 Jan  7 08:05 composer.lock
+drwxrwxr-x 2 sammy 1001   4096 Jan  7 08:05 config
+drwxrwxr-x 5 sammy 1001   4096 Jan  7 08:05 database
+drwxrwxr-x 4 sammy 1001   4096 Jan 15 16:46 docker-compose
+-rw-rw-r-- 1 sammy 1001   1015 Jan 15 16:45 docker-compose.yml
+-rw-rw-r-- 1 sammy 1001   1013 Jan  7 08:05 package.json
+-rw-rw-r-- 1 sammy 1001   1405 Jan  7 08:05 phpunit.xml
+drwxrwxr-x 2 sammy 1001   4096 Jan  7 08:05 public
+-rw-rw-r-- 1 sammy 1001    273 Jan  7 08:05 readme.md
+drwxrwxr-x 6 sammy 1001   4096 Jan  7 08:05 resources
+drwxrwxr-x 2 sammy 1001   4096 Jan  7 08:05 routes
+-rw-rw-r-- 1 sammy 1001    563 Jan  7 08:05 server.php
+drwxrwxr-x 5 sammy 1001   4096 Jan  7 08:05 storage
+drwxrwxr-x 4 sammy 1001   4096 Jan  7 08:05 tests
+-rw-rw-r-- 1 sammy 1001    538 Jan  7 08:05 webpack.mix.js
+```
+ 7. We’ll now run `composer install` to install the application dependencies:
+ $ `docker-compose exec app composer install`
+ 8. The last thing we need to do before testing the application is to generate a unique application key with the `artisan` Laravel command-line tool. This key is used to encrypt user sessions and other sensitive data:
+ $ `docker-compose exec app php artisan key:generate`
+ To confirm, we should see:
+ ```
+Application key set successfully.
+```
+ 9. Now go to your browser and access your server’s domain name or IP address on port 8000:
+```
+http://server_domain_or_IP:8000 
+```
+Probably: 
+```
+http://localhost:8000 
+```
